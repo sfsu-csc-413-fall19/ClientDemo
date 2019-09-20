@@ -15,7 +15,12 @@ public class ClientDemo {
     Request request = new Request.Builder()
         .url(userUrl)
         .build();
+    long startTime = System.nanoTime();
     Response response = client.newCall(request).execute();
+    long endTime = System.nanoTime();
+    long timeElapsed = endTime - startTime;
+
+    System.out.println("Request time took : " + timeElapsed);
     System.out.print(response.body().string());
   }
 }
